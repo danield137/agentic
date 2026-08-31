@@ -1,0 +1,13 @@
+UI/UX Pro Max Copilot distribution
+
+Upstream: https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+Upstream commit: f23267105ad1f4ccd94af45d382584ad45b586f7
+License: MIT (see LICENSE)
+Copyright: Copyright (c) 2024 Next Level Builder
+
+Adapted for GitHub Copilot CLI on 2026-08-31.
+
+Changes from upstream:
+- Uses Copilot-compatible skill frontmatter.
+- Resolves scripts from the loaded skill directory instead of CLAUDE_PLUGIN_ROOT.
+- Omits upstream tests and maintainer-only validation tooling.

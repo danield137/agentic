@@ -1,0 +1,58 @@
+[
+  {
+    "query": "do a cleanup pass over src/auth and show me the smells and bugs worth fixing",
+    "should_trigger": true
+  },
+  {
+    "query": "can you polish this codebase before I move on? focus on dead code, repetition, SRP, and correctness",
+    "should_trigger": true
+  },
+  {
+    "query": "review the branch for tech debt and rank the cleanup items by severity",
+    "should_trigger": true
+  },
+  {
+    "query": "what is worth cleaning up in the parser directory? don't edit yet",
+    "should_trigger": true
+  },
+  {
+    "query": "fix code-polish findings 1, 2, and 5-8",
+    "should_trigger": true
+  },
+  {
+    "query": "from that cleanup table, fix rows 3 and 7",
+    "should_trigger": true
+  },
+  {
+    "query": "find correctness bugs, dead code, and places that will be painful to extend across this repo",
+    "should_trigger": true
+  },
+  {
+    "query": "format src/api.py and sort its imports",
+    "should_trigger": false
+  },
+  {
+    "query": "review PR 482 for regressions",
+    "should_trigger": false
+  },
+  {
+    "query": "this test fails with expected 4 but got 5, fix it",
+    "should_trigger": false
+  },
+  {
+    "query": "rename OrderService to PurchaseService everywhere",
+    "should_trigger": false
+  },
+  {
+    "query": "add unit tests for parse_config",
+    "should_trigger": false
+  },
+  {
+    "query": "explain what src/cache/store.py does",
+    "should_trigger": false
+  },
+  {
+    "query": "refactor this one method to use early returns",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,17 @@
+PPT Master Copilot core distribution
+
+Upstream: https://github.com/hugohe3/ppt-master
+Upstream commit: 4e6fdc50136c3aea64a746f6bb4adf1c3305ec87
+Upstream skill version: 6.1.0
+License: MIT (see LICENSE)
+Copyright: Copyright (c) 2025-2026 Hugo He
+
+Adapted for GitHub Copilot CLI on 2026-08-31.
+
+Changes from upstream:
+- Uses Copilot-compatible skill frontmatter and runtime path guidance.
+- Uses Copilot CLI task agents when available, with a serial fallback.
+- Removes the Codex-only Image-to-PPTX route.
+- Omits optional comparison PNGs, bundled icon SVGs, bundled sound WAVs,
+  sponsor material, and upstream tests.
+- Preserves core generation, editing, template, validation, and export tooling.

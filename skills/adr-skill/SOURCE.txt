@@ -1,0 +1,7 @@
+Source: https://github.com/vercel/ai/tree/main/skills/adr-skill
+License: Apache License 2.0; see LICENSE.txt.
+Copied and adapted for this skill collection.
+
+Additional template:
+Source: https://github.com/adr/madr/blob/develop/template/adr-template-bare.md
+License: MIT OR CC0-1.0; see LICENSE-MADR.txt.

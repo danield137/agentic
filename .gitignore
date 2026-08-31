@@ -1,0 +1,14 @@
+# Never commit Copilot CLI state or credentials that may end up here by mistake.
+config.json
+settings.json
+permissions-config.json
+mcp-secrets/
+session-state/
+logs/
+*.db
+*.db-shm
+*.db-wal
+
+.DS_Store
+__pycache__/
+
