@@ -47,7 +47,7 @@ no re-install after a `git pull`.
 
 | Skill | Description |
 | --- | --- |
-| `adr-skill` | Create and maintain Architecture Decision Records using the MADR bare template. |
+| `adr-skill` | Create and maintain MADR Architecture Decision Records with required before-and-after Mermaid diagrams. |
 | `backlog` | Create and maintain lean, milestone-based planning backlogs. |
 | `code-polish` | Review code for smells, dead code, duplication, SRP violations, extensibility problems, and bugs, reported as a ranked table. |
 | `interactive-brainstorm` | Explore open-ended ideas as a user-steered question-and-answer search tree with provisional answers and backtracking. |

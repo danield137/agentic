@@ -154,6 +154,34 @@ How should this repository record important architecture decisions so the reason
 
 Chosen option: "Adopt Architecture Decision Records in \`${adrDir}/\` using the MADR bare template", because it keeps decisions version-controlled next to the code, captures the drivers behind each choice, and includes enough structure to compare options without becoming a heavyweight RFC process.
 
+### Before and After
+
+Use sequence diagrams because this decision changes how contributors record and later retrieve architecture rationale.
+
+#### Before
+
+\`\`\`mermaid
+sequenceDiagram
+    actor Author
+    participant Repository
+    actor Reader
+    Author->>Repository: Commit architecture change
+    Reader->>Repository: Inspect the decision later
+    Repository-->>Reader: Return implementation without rationale
+\`\`\`
+
+#### After
+
+\`\`\`mermaid
+sequenceDiagram
+    actor Author
+    participant Repository
+    actor Reader
+    Author->>Repository: Commit architecture change and ADR
+    Reader->>Repository: Read the ADR before changing code
+    Repository-->>Reader: Return decision and rationale
+\`\`\`
+
 ### Consequences
 
 * Good, because decisions are discoverable and version-controlled alongside the code

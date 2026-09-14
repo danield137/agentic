@@ -24,6 +24,33 @@ informed:
 
 Chosen option: "", because
 
+### Before and After
+
+<!--
+Choose one Mermaid diagram family and use it for both views:
+- sequenceDiagram for interactions, ordering, actors, messages, or protocols
+- flowchart for components, boundaries, dependencies, data flow, or storage
+
+Replace both placeholder diagrams. Keep their scope, direction, abstraction,
+and names directly comparable.
+-->
+
+<!-- Explain in one sentence why this diagram family fits the change. -->
+
+#### Before
+
+```mermaid
+flowchart LR
+    Current[Current architecture]
+```
+
+#### After
+
+```mermaid
+flowchart LR
+    Proposed[Proposed architecture]
+```
+
 ### Consequences
 
 * Good, because

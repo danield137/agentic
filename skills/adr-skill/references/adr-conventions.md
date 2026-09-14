@@ -38,6 +38,8 @@ Every ADR should use the bare template sections:
 8. Pros and Cons of the Options
 9. More Information
 
+Every new or substantively updated ADR must also contain a `Before and After` subsection under `Decision Outcome`, with directly comparable Mermaid diagrams. This extends the bare template without changing its top-level MADR sections. Existing ADRs do not need retrofitting for status-only lifecycle updates, link corrections, or appended learnings.
+
 ## Status Values
 
 Use the `status` field in front matter:

@@ -36,6 +36,29 @@ How can we provide a fast, isolated database for local development and CI withou
 
 Chosen option: "SQLite via better-sqlite3", because it best satisfies the speed, isolation, and offline-development drivers while keeping PostgreSQL compatibility risk explicit instead of changing the production database choice.
 
+### Before and After
+
+Use block diagrams because the decision changes database topology and isolation boundaries.
+
+#### Before
+
+```mermaid
+flowchart LR
+    Developer[Developer] --> Shared[(Shared PostgreSQL)]
+    CI_A[CI run A] --> Shared
+    CI_B[CI run B] --> Shared
+```
+
+#### After
+
+```mermaid
+flowchart LR
+    Developer[Developer] --> Local[(Local SQLite)]
+    CI_A[CI run A] --> Isolated_A[(Isolated SQLite)]
+    CI_B[CI run B] --> Isolated_B[(Isolated SQLite)]
+    Compatibility[Compatibility job] --> PostgreSQL[(PostgreSQL)]
+```
+
 ### Consequences
 
 * Good, because CI database setup drops from minutes to seconds.

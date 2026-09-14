@@ -16,4 +16,6 @@ It is the MADR bare template:
 8. Pros and Cons of the Options
 9. More Information
 
+The `Decision Outcome` section includes a required `Before and After` subsection for new and substantively updated ADRs. It contains matching Mermaid `sequenceDiagram` views for interaction changes or matching Mermaid `flowchart` block views for structural changes.
+
 Do not introduce alternate ADR templates in this skill. If a target repository already has an incompatible ADR convention, follow that repository's existing convention for compatibility; otherwise use the bare template.
