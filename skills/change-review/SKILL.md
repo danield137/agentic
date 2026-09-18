@@ -86,6 +86,7 @@ Look for:
   resource-lifetime patterns;
 - framework or repository helpers that make the new code fit the surrounding system;
 - unexplained deviations from local conventions or decisions.
+- prior file history in source control, review prior PRs where available and consider past comments on PRs and how they were resolved.
 
 Do not report generic SOLID advice, standalone correctness bugs, compatibility concerns, or naming
 preferences unless the issue is specifically an inconsistency with demonstrated repository
