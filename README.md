@@ -52,6 +52,7 @@ no re-install after a `git pull`.
 | `code-polish` | Review code for smells, dead code, duplication, SRP violations, extensibility problems, and bugs, reported as a ranked table. |
 | `interactive-brainstorm` | Explore open-ended ideas as a user-steered question-and-answer search tree with provisional answers and backtracking. |
 | `ppt-master` | Create, edit, redesign, and validate editable PowerPoint decks with a Copilot-adapted core workflow. |
+| `readme-creation` | Create or substantially restructure approachable, source-verified repository README files. |
 | `skill-creator` | Create, review, and improve Copilot CLI skills, including measuring how reliably a skill triggers. |
 | `ui-ux-pro-max` | Search and apply local UI/UX design intelligence across web, mobile, and desktop stacks. |
 
