@@ -5,7 +5,16 @@ we will realistically reach. Milestones carry the timing; tasks carry the work.
 
 Design docs carry why. This backlog carries what/when. Current-status docs carry what exists now.
 
-Important: {reference/prototype status, if any. Remove this line when there is no prototype caveat.}
+## Mandatory instructions
+
+- Follow the Quality gate below.
+- {Concise completion-affecting instruction or mandatory authoritative link. Include reference status, ordering, validation, review, compatibility, rollout, or environment constraints when relevant. Write "None beyond the Quality gate" when none applies.}
+
+## Quality gate
+
+Use **BRCGBC** for every item: **Benchmark -> Red test -> Change/Fix -> Green test -> Benchmark -> Conformance**. An item is complete only with evidence for each required step.
+
+If a required step cannot run, record the blocker or approved replacement in this backlog. A replacement gate must be named here, state its required completion evidence, and explicitly say what replaces any benchmark or conformance step.
 
 ---
 
@@ -32,10 +41,10 @@ Important: {reference/prototype status, if any. Remove this line when there is n
 
 ## Archive
 
-Finished milestones are appended here, newest last.
+Finished milestones whose items satisfied the Quality gate are appended here, newest last.
 
 * (done) [x] **M0:** {finished milestone outcome}
   * [x] **M0T1:** {Completed task}
-    * Note: {Optional one-line result or commit reference if useful.}
+    * Note: {Optional one-line result or evidence reference if useful.}
   * [-] **M0T2:** {Skipped task}
     * Note: {Why this is not happening.}

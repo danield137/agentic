@@ -1,30 +1,39 @@
 # Backlog
 
-Simple planning for adding document search. Start with the design document for context.
+Simple planning for improving a repeatable workflow. Start with the relevant design context.
 
-Important: PR 42 is a reference implementation, not the baseline. New work should start from the repository's default branch. Use the prototype for ideas and experiments only.
+## Mandatory instructions
+
+- Follow the Quality gate below.
+- Complete dependent tasks in listed order; later work waits for the evidence produced by earlier tasks.
+- Record required review and integration evidence before a milestone is complete.
+
+## Quality gate
+
+Use **BRCGBC** for every item: **Benchmark -> Red test -> Change/Fix -> Green test -> Benchmark -> Conformance**. Required evidence is a baseline and comparable follow-up measurement, a check that fails before and passes after the change, the change itself, and a conformance result against the stated requirements.
+
+If a required step cannot run, keep the item open and record the blocker or approved replacement under that item. No replacement gate is currently approved; any future replacement must be named here with its required evidence and explicit benchmark and conformance substitutes.
 
 ---
 
-* (current) [ ] **M1:** Stabilize the search foundation
-  * [ ] **M1T1:** Finalize a versioned index format
-    * Note: Preserve forward compatibility and support deterministic random lookup.
-  * [ ] **M1T2:** Define relevance and latency benchmarks
-    * Note: Record result quality, query latency, index size, and build time.
-  * [ ] **M1T3:** Validate malformed, empty, and unsupported input
+* (current) [ ] **M1:** Stabilize the core workflow
+  * [ ] **M1T1:** Reduce avoidable variation in the primary outcome
+    * Note: Use the same representative case and conditions for both benchmarks.
+  * [ ] **M1T2:** Prevent incomplete input from being accepted
+  * [ ] **M1T3:** Restore the expected outcome after interrupted work
 
-* (next) [ ] **M2:** Build indexing and query paths
-  * [ ] **M2T1:** Build indexes during ingestion
-  * [ ] **M2T2:** Query indexes with an exact fallback
-    * Note: Missing, corrupt, or skipped indexes must preserve correct results.
-  * [ ] **M2T3:** Cache shared metadata instead of reopening it per query
+* (next) [ ] **M2:** Improve efficiency without weakening requirements
+  * [ ] **M2T1:** Reduce effort for the common path
+  * [ ] **M2T2:** Preserve required checks under the improved path
+    * Note: Conformance evidence must cover normal and boundary cases.
+  * [ ] **M2T3:** Reduce delay in boundary cases
 
-* (future) [ ] **M3:** Expose the feature
-  * [ ] **M3T1:** Add user-facing configuration behind a feature flag
-  * [ ] **M3T2:** Document rollout, limitations, and benchmark expectations
+* (future) [ ] **M3:** Broaden conformance
+  * [ ] **M3T1:** Support additional representative scenarios
+  * [ ] **M3T2:** Resolve the remaining conformance gaps
 
 ---
 
 ## Archive
 
-Finished milestones are appended here, newest last.
+Finished milestones whose items satisfied the Quality gate are appended here, newest last.
