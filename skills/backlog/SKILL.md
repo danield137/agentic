@@ -1,6 +1,6 @@
 ---
 name: backlog
-description: Create and maintain lean, milestone-based backlog documents for planning work. Use when asked to create a backlog, update backlog items, organize planned work into current/next/future milestones, turn discussion or informal task lists into backlog tasks, renumber backlog ids, or keep planning separate from design docs, current-status docs, decision records, and review feedback.
+description: Create and maintain lean, milestone-based backlog documents for planning work. Use when asked to create a backlog, update backlog items, organize planned work into current/next/future milestones, turn discussion or informal task lists into backlog tasks, assign stable area-based task IDs or migrate older backlogs to them, or keep planning separate from design docs, current-status docs, decision records, and review feedback.
 ---
 
 # Backlog Skill
@@ -15,6 +15,10 @@ The backlog is the primary entry point for agents taking on work. Before the act
 
 Do not copy full design docs, process manuals, decision records, or status reports into the backlog. Persist only the directive and authoritative link needed to discover the requirement. Examples include the quality gate, validation or conformance requirements, compatibility or rollout gates, dependency or ordering constraints, review or integration prerequisites, and environment restrictions.
 
+## Task areas
+
+Every backlog persists a `## Task areas` section after `## Mandatory instructions` and before `## Quality gate`. It is a two-column `| Area | Covers |` table that lists each area code in use and says, in plain words, what the area covers. Keep rows for areas that appear only in the Archive. Add a new area to the table when a task first uses it.
+
 ## Quality gate
 
 Every backlog persists a short `## Quality gate` section near the top, before active milestones. Use **BRCGBC** unless the backlog explicitly replaces it:
@@ -28,11 +32,15 @@ An item or milestone is complete only when evidence exists for every required st
 - Milestones are enough structure. Use top-level milestone checkbox lines, not heavy section headings with prose.
 - Keep **at most 3-4 milestones**.
 - Always include at least `(current)` and `(next)`. Put work that does not realistically fit in next under `(future)`.
-- Use milestone ids `M1`, `M2`, etc. Use task ids `M1T1`, `M1T2`, `M2T1`, etc.
+- Use milestone IDs `M1`, `M2`, etc. They describe timing and order, not identity.
+- Task IDs are an area code plus a three-digit number, such as `REMINDERS001`, `SYNC002`, or `SHARING001`.
+- Area codes are uppercase, with words separated by underscores, as in `TASK_LIST`. They must be understandable to someone who doesn't know the backlog: prefer a plain word, such as `REMINDERS`, over a cryptic abbreviation, such as `RMDR`. Abbreviate only when the result stays obvious, as in `AUTH` for authentication.
+- Task IDs are stable. An ID never changes when its task moves between milestones, and numbers are never reused. A new task takes the next free number in its area.
+- In notes and other docs, refer to a task by its ID in backticks, such as `SYNC001`.
 - Every milestone and task starts with a checkbox: `[ ]` planned, `[x]` done, `[-]` skipped/not happening.
 - Milestone line shape: `* (current) [ ] **M1:** Stabilize the core workflow`.
-- Task line shape: `  * [ ] **M1T1:** Finalize the completion criteria`.
-- Bold only the milestone/task id, not the full text.
+- Task line shape: `  * [ ] **REMINDERS001:** Finalize the completion criteria`.
+- Bold only the milestone/task ID, not the full text.
 - Tasks should be one-line checkboxes. Do not add `Outline`, `Context`, `Implementation hints`, `Change records`, or `Skipped because` sub-sections.
 - Add at most one high-signal note per task. The note should capture a non-obvious constraint, decision boundary, blocker, reference/prototype caveat, or acceptance criterion.
 - Avoid implementation walkthroughs. Backlog is not design, not status, and not a review record.
@@ -48,12 +56,12 @@ Every planned item uses this structure:
 
 ```markdown
 * (current) [ ] **M1:** Short milestone outcome
-  * [ ] **M1T1:** Finalize the first task
+  * [ ] **REMINDERS001:** Finalize the first task
     * Note: One non-obvious constraint, boundary, blocker, or acceptance criterion.
-  * [ ] **M1T2:** Validate the second task
+  * [ ] **SYNC001:** Validate the second task
 ```
 
-Ids are monotonic within each milestone. If moving items between milestones, renumber them.
+A task ID comes from the task's area, not its milestone, so the ID stays the same when the task moves between milestones.
 
 ## Workflow
 
@@ -68,7 +76,13 @@ Look for an existing backlog before creating one:
 
 If none exists, create one from `assets/templates/backlog.md`.
 
-When updating an existing backlog, add `## Mandatory instructions` and `## Quality gate` before the active milestones if either is missing. Preserve explicitly named requirements and replacement gates; otherwise use BRCGBC.
+When updating an existing backlog, add `## Mandatory instructions`, `## Task areas`, and `## Quality gate` before the active milestones if any is missing. Preserve explicitly named requirements and replacement gates; otherwise use BRCGBC.
+
+If the backlog still uses `M{n}T{n}` task IDs, migrate it once: map each task to an area ID, add the `## Task areas` table, and update references to the old IDs in notes and other docs. Record the ID rule in its Mandatory instructions, using one of the backlog's own IDs as the example:
+
+```markdown
+- Task IDs are an area code plus a three-digit number, such as `REMINDERS001`. An ID never changes when its task moves between milestones, and numbers aren't reused. The area codes are listed in Task areas; add new areas there in the same style. This replaces the `M1T1` style for tasks; milestones keep `M1`, `M2`, and so on.
+```
 
 ### 2. Capture Planning Intent
 
@@ -93,11 +107,12 @@ Do not over-plan. If the user gives too many items, keep Current and Next focuse
 For each item:
 
 - Persist `## Mandatory instructions` before the Quality gate and active milestones. Include each completion-affecting requirement directly or through a mandatory authoritative link.
+- Persist `## Task areas` between Mandatory instructions and the Quality gate. Add an area there the first time a task uses it.
 - Persist `## Quality gate` before the active milestones; chat guidance alone is not sufficient.
 - Follow the persisted gate for item and milestone work. Mark an item `[x]` only after its required evidence exists.
 - Record a gate-wide replacement in the Quality gate section. Record an item-specific blocker or approved replacement in that item's optional note.
 - Milestone line: `* (current|next|future) [ ] **M{n}:** Outcome`.
-- Task line: `  * [ ] **M{n}T{n}:** Simple-verb task`.
+- Task line: `  * [ ] **AREA001:** Simple-verb task`, where `AREA` is a code listed in Task areas and `001` is the next free number in that area.
 - Optional note: `    * Note: One high-signal note.`
 - Keep notes rare. If every task has multiple notes, the backlog is becoming a design doc.
 - Prefer local links only when they materially clarify reference/prototype status, a mandatory instruction, or an acceptance criterion.
@@ -111,6 +126,7 @@ Before finalizing:
 - `## Mandatory instructions` appears before the Quality gate and active milestones.
 - Every durable requirement affecting selection, implementation, validation, review, integration, deployment, release, or completion is stated there or discoverable through a mandatory authoritative link.
 - Linked details are summarized as concise directives; full design docs, process manuals, decision records, and status reports are not duplicated.
+- `## Task areas` appears after Mandatory instructions and before the Quality gate, and its `| Area | Covers |` table lists every area code in use.
 - `## Quality gate` appears before the active milestones.
 - BRCGBC is present as `Benchmark -> Red test -> Change/Fix -> Green test -> Benchmark -> Conformance`, unless the backlog explicitly names a replacement.
 - A replacement gate states the evidence required before completion and what replaces any benchmark or conformance step.
@@ -120,9 +136,11 @@ Before finalizing:
 - Milestones are top-level checkbox bullets, not prose-heavy sections.
 - Every task begins with `[ ]`, `[x]`, or `[-]`.
 - Task lines are one-line checkboxes.
-- Bold applies only to ids (`**M1:**`, `**M1T1:**`), not the full text.
+- Bold applies only to IDs (`**M1:**`, `**REMINDERS001:**`), not the full text.
 - Each task has at most one note.
-- Ids are monotonic after any move.
+- Task IDs are unique, use an area code listed in Task areas, never change when a task moves, and numbers aren't reused.
+- Area codes are uppercase, separate words with underscores, and are clear to someone who doesn't know the backlog.
+- No task still uses an `M{n}T{n}` ID; a migrated backlog records the ID rule in Mandatory instructions, and references use the new IDs.
 - Immediate work is separated from public/user-facing exposure.
 - Reference/prototype status is explicit when relevant.
 - Informal task lists are converted into useful tasks, not copied.

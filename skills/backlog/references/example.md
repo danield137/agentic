@@ -1,12 +1,23 @@
 # Backlog
 
-Simple planning for improving a repeatable workflow. Start with the relevant design context.
+Simple planning for adding reminders, offline sync, and sharing to a todo app. Start with the relevant design docs for context.
 
 ## Mandatory instructions
 
 - Follow the Quality gate below.
+- The offline sync prototype is reference material, not the implementation baseline; build sync from the main branch.
+- Existing tasks must keep loading after every release; change the stored task format only together with a migration.
 - Complete dependent tasks in listed order; later work waits for the evidence produced by earlier tasks.
 - Record required review and integration evidence before a milestone is complete.
+
+## Task areas
+
+| Area | Covers |
+| --- | --- |
+| `TASK_LIST` | Creating, editing, completing, and ordering tasks |
+| `REMINDERS` | Due dates and reminder notifications |
+| `SYNC` | Offline changes and keeping tasks in sync across devices |
+| `SHARING` | Sharing lists with other people and what each person can change |
 
 ## Quality gate
 
@@ -16,24 +27,34 @@ If a required step cannot run, keep the item open and record the blocker or appr
 
 ---
 
-* (current) [ ] **M1:** Stabilize the core workflow
-  * [ ] **M1T1:** Reduce avoidable variation in the primary outcome
-    * Note: Use the same representative case and conditions for both benchmarks.
-  * [ ] **M1T2:** Prevent incomplete input from being accepted
-  * [ ] **M1T3:** Restore the expected outcome after interrupted work
+* (current) [ ] **M1:** Remind people about tasks that are due
+  * [ ] **REMINDERS001:** Store an optional due date and reminder time on each task
+  * [ ] **REMINDERS002:** Deliver each reminder at its scheduled time
+    * Note: Use the same device and conditions for both delivery-delay benchmarks.
+  * [ ] **TASK_LIST004:** Sort the task list by due date
+  * [ ] **REMINDERS003:** Keep reminders on time across time zone and daylight saving changes
 
-* (next) [ ] **M2:** Improve efficiency without weakening requirements
-  * [ ] **M2T1:** Reduce effort for the common path
-  * [ ] **M2T2:** Preserve required checks under the improved path
-    * Note: Conformance evidence must cover normal and boundary cases.
-  * [ ] **M2T3:** Reduce delay in boundary cases
+* (next) [ ] **M2:** Keep tasks in sync across devices, including offline edits
+  * [ ] **SYNC001:** Queue changes made offline and send them on reconnect
+  * [ ] **SYNC002:** Resolve conflicting edits from two devices without losing either one
+    * Note: Conformance evidence must cover the same task edited on two offline devices.
+  * [ ] **SYNC003:** Reduce sync time for large lists on slow connections
+  * [ ] **REMINDERS004:** Deliver reminders while the device is offline
 
-* (future) [ ] **M3:** Broaden conformance
-  * [ ] **M3T1:** Support additional representative scenarios
-  * [ ] **M3T2:** Resolve the remaining conformance gaps
+* (future) [ ] **M3:** Let people share lists
+  * [ ] **SHARING001:** Invite another person to a list
+  * [ ] **SHARING002:** Limit what each person can change in a shared list
+  * [ ] **SHARING003:** Sync shared lists between people
+    * Note: Builds on the offline queue from `SYNC001`, so offline edits to a shared list aren't lost.
 
 ---
 
 ## Archive
 
 Finished milestones whose items satisfied the Quality gate are appended here, newest last.
+
+* (done) [x] **M0:** Ship the basic task list
+  * [x] **TASK_LIST001:** Create, edit, and complete tasks
+  * [x] **TASK_LIST002:** Prevent tasks with empty titles from being saved
+  * [-] **TASK_LIST003:** Reorder tasks by drag and drop
+    * Note: Replaced by sorting by due date in `TASK_LIST004`.
