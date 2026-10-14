@@ -4,10 +4,7 @@
 
 If the repo already has an ADR directory, keep it.
 
-If no ADR directory exists, prefer:
-
-- `docs/decisions/` when the repo already has a docs structure.
-- `adr/` for smaller repos.
+If no ADR directory exists, create the ADR in the root folder of the relevant code area. For example, for a storage-module change, use `docs/adr/storage/`. The scripts don't detect per-area folders, so pass the folder with `--dir`.
 
 The scripts detect: `contributing/decisions/`, `docs/decisions/`, `adr/`, `docs/adr/`, `docs/adrs/`, then `decisions/`.
 

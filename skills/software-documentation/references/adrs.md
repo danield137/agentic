@@ -118,7 +118,7 @@ Do not write an ADR for routine implementation details, bug fixes, style prefere
 
 Before drafting:
 
-1. Look for existing ADRs in `contributing/decisions/`, `docs/decisions/`, `adr/`, `docs/adr/`, `docs/adrs/`, or `decisions/`.
+1. Look for existing ADRs in `contributing/decisions/`, `docs/decisions/`, `adr/`, `docs/adr/`, `docs/adrs/`, or `decisions/`, including per-area subfolders such as `docs/adr/storage/`.
 2. Preserve the repo's existing directory and filename convention.
 3. Read related ADRs so the new decision does not conflict with accepted decisions.
 4. Trace the current interaction flow or system structure that the `Before` diagram will represent.
@@ -153,6 +153,8 @@ Preferred, where `<skill-dir>` is this skill's base directory:
 ```bash
 node <skill-dir>/scripts/new_adr.js --title "Choose database"
 ```
+
+The script only auto-detects repo-wide ADR folders. For a per-area folder, pass it explicitly, for example `--dir docs/adr/storage`.
 
 Then replace every placeholder with real content. Keep the ADR self-contained and focused on the decision.
 
@@ -196,10 +198,10 @@ Use `scripts/set_adr_status.js` for status changes.
 
 ## Bootstrap
 
-When introducing ADRs to a repo with no ADR directory:
+When introducing ADRs to a repo with no ADR directory, bootstrap the folder for the relevant code area, here a storage module:
 
 ```bash
-node <skill-dir>/scripts/bootstrap_adr.js --dir adr
+node <skill-dir>/scripts/bootstrap_adr.js --dir docs/adr/storage
 ```
 
 This creates an index and a first bare-template ADR for adopting ADRs.

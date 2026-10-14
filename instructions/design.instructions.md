@@ -23,7 +23,7 @@ Design and architecture work is subtle. Do not jump directly into implementation
 3. **Make a high-level pass first.** Sketch the algorithm, data flow, component responsibilities, or pseudocode before writing production code. Keep this implementation-independent enough to expose design tradeoffs early.
 4. **Validate the call-site shape.** Before finalizing the design, assume the implementation already exists and show what client code would look like when using it. Confirm that the resulting API, ergonomics, naming, and integration points make sense before implementing.
 5. **Structure larger changes into phases.** Always consider user compatibility and blast radius. If a change is risky, propose an initial phase made only of safe, preparatory changes before the final risky switch.
-6. **Write an ADR before implementation.** Once the direction is clear, create an Architecture Decision Record in the root folder of the relevant code area. For example, for a storage-module change, place it under `docs/adr/storage/{change-title}.md`. Follow the ADR guide in the `software-documentation` skill.
+6. **Write an ADR before implementation.** Once the direction is clear, create an Architecture Decision Record with a date-prefixed name in the root folder of the relevant code area. For example, for a storage-module change, place it under `docs/adr/storage/{YYYY-MM-DD}-{change-title}.md`. If the repository already has its own ADR convention, use that instead. Write the ADR with the ADR guide in the `software-documentation` skill.
 
 ## Decision standard
 

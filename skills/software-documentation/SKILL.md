@@ -15,7 +15,7 @@ deep it goes.
 
 | Type | Answers | Reader | Purpose | Guide |
 | --- | --- | --- | --- | --- |
-| Comment | Why is this code surprising? | Someone reading this code | Explain the local reason | [Comments](#comments) |
+| Comment | Why is this code surprising? | Someone reading this code | Explain the local reason or idea | [Comments](#comments) |
 | README | How do I get started? | Someone new to the repository or tool | Reach a first success | `references/readmes.md` |
 | Handbook | What should I understand? | An engineer new to the product or its domain | Build intuition | `references/handbooks.md` |
 | Design doc | How should we build this change, and why? | Reviewers and implementers of the change | Reach a decision before building | `references/design-docs.md` |
@@ -151,9 +151,10 @@ confirming it is stale, and replace copies with links.
 
 Comments have no separate guide. Add one only where the code would surprise a
 careful reader: a non-obvious reason, a constraint imposed from elsewhere, a
-workaround, or an invariant. Say why, not what. If the explanation needs more
-than a few lines, move it to the architecture doc or an ADR and link to it from
-the comment.
+workaround, an invariant, or a reasonably complex algorithm. Explain why, or
+for an algorithm the idea behind it; never restate what each line does. If the
+explanation needs more than a few lines, move it to the architecture doc or an
+ADR and link to it from the comment.
 
 ## How the documents connect
 

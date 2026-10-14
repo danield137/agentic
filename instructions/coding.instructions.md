@@ -14,6 +14,7 @@ Follow these conventions whenever writing or editing code.
 - If it is not broken, do not touch it. Do not simplify, extract, generalize, maintain, or otherwise improve unrelated working code unless the user explicitly asks for that change. If you notice a worthwhile improvement, mention it as a proposal during design or implementation planning instead of making it silently.
 - Do not lay groundwork for isolated small features. Avoid overdesigning abstractions, extension points, frameworks, or future-proofing until the feature actually needs them. Build the smallest sound solution that solves the current problem and keeps the blast radius low: anyone can build a bridge, but a good engineer builds one that just barely holds.
 - Keep functions short and readable; avoid going over roughly 20 lines of code. Split longer logic into clear workflow steps such as `load_input()`, `validate()`, `do_something()`, and `do_next_thing()`.
+- Comment only where the code would surprise a careful reader: a non-obvious reason, an outside constraint, a workaround, an invariant, or a reasonably complex algorithm. Explain why, or for an algorithm the idea behind it; never restate what each line does.
 - When naming things (functions, variables, types, etc.), resolve naming choices by this priority, highest first:
   1. **Codebase consistency**: match how similar existing code names the concept (e.g., if the codebase refers to the API server as "Frontend", align to that).
   2. **Contextual consistency**: keep names internally consistent within the change.
