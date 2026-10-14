@@ -35,54 +35,54 @@ informed:
 
 # <!-- short title, representative of solved problem and found solution -->
 
-## Context and Problem Statement
+## 1. Context and Problem Statement
 
-## Decision Drivers
+## 2. Decision Drivers
 
 * <!-- decision driver -->
 
-## Considered Options
+## 3. Considered Options
 
 * <!-- option -->
 
-## Decision Outcome
+## 4. Decision Outcome
 
 Chosen option: "", because
 
-### Before and After
+### 4.1 Before and After
 
 Use block diagrams because <!-- the material change concerns structure or boundaries -->
 
-#### Before
+#### 4.1.1 Before
 
 ```mermaid
 flowchart LR
     Current[Current architecture]
 ```
 
-#### After
+#### 4.1.2 After
 
 ```mermaid
 flowchart LR
     Proposed[Proposed architecture]
 ```
 
-### Consequences
+### 4.2 Consequences
 
 * Good, because
 * Bad, because
 
-### Confirmation
+### 4.3 Confirmation
 
-## Pros and Cons of the Options
+## 5. Pros and Cons of the Options
 
-### <!-- title of option -->
+### 5.1 <!-- title of option -->
 
 * Good, because
 * Neutral, because
 * Bad, because
 
-## More Information
+## 6. More Information
 ````
 
 Fill every section with real content or remove optional entries that do not apply. Never remove `Before and After` or either diagram from a new or substantively updated ADR. Keep ADRs concise, but preserve the rationale: decision drivers, outcome justification, and option pros/cons explain why the chosen option won.

@@ -78,6 +78,45 @@ reuse its names, facts, or wording.
 7. **Follow the repository first.** Its existing templates, folders, naming,
    and conventions win over this skill's defaults.
 
+## Document structure
+
+These rules apply to every document type except comments.
+
+1. **Number the sections.** Leave the title unnumbered and number everything
+   below it: `1.`, `1.1`, `1.1.1`, `1.1.1.1`. Renumber when you add, remove, or
+   move a section.
+2. **Nest at most four levels.** Four levels of numbered sections, `##` through
+   `#####`, is the maximum. If the content needs a fifth, split the document or
+   flatten the outline.
+3. **Add a table of contents to longer documents.** When a document runs longer
+   than about two screens, put an unnumbered `Contents` section after the title
+   and any introduction, listing the numbered sections as nested links. Design
+   docs, architecture docs, specs, and multi-topic handbooks usually need one;
+   READMEs and ADRs usually don't. Keep it in sync with the headings.
+4. **Keep the existing structure when editing.** Apply these rules to new
+   documents and to documents you restructure. For a smaller edit to an
+   existing document, follow its current numbering and layout.
+
+For example, a handbook for an imaginary recipe app might nest four levels like
+this. Copy the shape, not the names:
+
+```markdown
+## Contents
+
+- [1. Systems](#1-systems)
+  - [1.1 Recommendation system](#11-recommendation-system)
+    - [1.1.1 UX](#111-ux)
+      - [1.1.1.1 Recommended recipe carousel](#1111-recommended-recipe-carousel)
+
+## 1. Systems
+
+### 1.1 Recommendation system
+
+#### 1.1.1 UX
+
+##### 1.1.1.1 Recommended recipe carousel
+```
+
 ## Workflow
 
 1. **Choose the type.** Identify the reader and their question, and match them
@@ -93,8 +132,9 @@ reuse its names, facts, or wording.
 4. **Draft.** Fill the template at the type's level. Omit sections that
    genuinely don't apply; never leave empty headings or placeholder text.
 5. **Review.** Check the draft against the guide's profile, especially its
-   stopping rule, and against its bad examples. Check links, anchors,
-   commands, Markdown, and Mermaid syntax.
+   stopping rule, and against its bad examples. Check numbering, nesting depth,
+   the table of contents, links, anchors, commands, Markdown, and Mermaid
+   syntax.
 6. **Report.** Summarize what changed, where each kind of content went, and
    which checks actually ran. Don't imply a command was run when it was only
    read.

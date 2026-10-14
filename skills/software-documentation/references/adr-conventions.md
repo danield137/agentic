@@ -38,6 +38,8 @@ Every ADR should use the bare template sections:
 8. Pros and Cons of the Options
 9. More Information
 
+Number the headings as the template does: `## 1. Context and Problem Statement` through `## 6. More Information`. `Before and After`, `Consequences`, and `Confirmation` are subsections `4.1` to `4.3` of `Decision Outcome`, and each option under `Pros and Cons of the Options` is numbered `5.1`, `5.2`, and so on. The front matter is not numbered, so these numbers differ from the list above.
+
 Every new or substantively updated ADR must also contain a `Before and After` subsection under `Decision Outcome`, with directly comparable Mermaid diagrams. This extends the bare template without changing its top-level MADR sections. Existing ADRs do not need retrofitting for status-only lifecycle updates, link corrections, or appended learnings.
 
 ## Status Values

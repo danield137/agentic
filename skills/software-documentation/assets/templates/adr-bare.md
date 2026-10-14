@@ -8,23 +8,23 @@ informed:
 
 # <!-- short title, representative of solved problem and found solution -->
 
-## Context and Problem Statement
+## 1. Context and Problem Statement
 
 
 
-## Decision Drivers
+## 2. Decision Drivers
 
 * <!-- decision driver -->
 
-## Considered Options
+## 3. Considered Options
 
 * <!-- option -->
 
-## Decision Outcome
+## 4. Decision Outcome
 
 Chosen option: "", because
 
-### Before and After
+### 4.1 Before and After
 
 <!--
 Choose one Mermaid diagram family and use it for both views:
@@ -37,35 +37,35 @@ and names directly comparable.
 
 <!-- Explain in one sentence why this diagram family fits the change. -->
 
-#### Before
+#### 4.1.1 Before
 
 ```mermaid
 flowchart LR
     Current[Current architecture]
 ```
 
-#### After
+#### 4.1.2 After
 
 ```mermaid
 flowchart LR
     Proposed[Proposed architecture]
 ```
 
-### Consequences
+### 4.2 Consequences
 
 * Good, because
 * Bad, because
 
-### Confirmation
+### 4.3 Confirmation
 
 
 
-## Pros and Cons of the Options
+## 5. Pros and Cons of the Options
 
-### <!-- title of option -->
+### 5.1 <!-- title of option -->
 
 * Good, because
 * Neutral, because
 * Bad, because
 
-## More Information
+## 6. More Information

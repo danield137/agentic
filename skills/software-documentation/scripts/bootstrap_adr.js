@@ -131,34 +131,34 @@ informed: ${informed}
 
 # ${title}
 
-## Context and Problem Statement
+## 1. Context and Problem Statement
 
 Architecture decisions in this project are made implicitly through code, conversations, and tribal knowledge. When a new contributor or coding agent joins the codebase, there is no durable record of why things are built the way they are.
 
 How should this repository record important architecture decisions so the reasoning stays close to the code?
 
-## Decision Drivers
+## 2. Decision Drivers
 
 * Decisions should be easy to find in the same repository as the code they affect
 * Records should be short enough that people maintain them
 * The format should preserve why an option was chosen, not just what was chosen
 * Superseded decisions should remain discoverable for future readers
 
-## Considered Options
+## 3. Considered Options
 
 * Keep decisions implicit in code and conversations
 * Store decisions in an external wiki or document system
 * Adopt Architecture Decision Records in \`${adrDir}/\` using the MADR bare template
 
-## Decision Outcome
+## 4. Decision Outcome
 
 Chosen option: "Adopt Architecture Decision Records in \`${adrDir}/\` using the MADR bare template", because it keeps decisions version-controlled next to the code, captures the drivers behind each choice, and includes enough structure to compare options without becoming a heavyweight RFC process.
 
-### Before and After
+### 4.1 Before and After
 
 Use sequence diagrams because this decision changes how contributors record and later retrieve architecture rationale.
 
-#### Before
+#### 4.1.1 Before
 
 \`\`\`mermaid
 sequenceDiagram
@@ -170,7 +170,7 @@ sequenceDiagram
     Repository-->>Reader: Return implementation without rationale
 \`\`\`
 
-#### After
+#### 4.1.2 After
 
 \`\`\`mermaid
 sequenceDiagram
@@ -182,7 +182,7 @@ sequenceDiagram
     Repository-->>Reader: Return decision and rationale
 \`\`\`
 
-### Consequences
+### 4.2 Consequences
 
 * Good, because decisions are discoverable and version-controlled alongside the code
 * Good, because contributors and coding agents can understand why architecture choices were made
@@ -190,32 +190,32 @@ sequenceDiagram
 * Bad, because writing ADRs takes time
 * Bad, because outdated decisions need explicit follow-up ADRs or notes when they are superseded
 
-### Confirmation
+### 4.3 Confirmation
 
 This decision is confirmed when the ADR directory, index, and this first ADR are committed to the repository.
 
-## Pros and Cons of the Options
+## 5. Pros and Cons of the Options
 
-### Keep decisions implicit in code and conversations
+### 5.1 Keep decisions implicit in code and conversations
 
 * Good, because it requires no new process
 * Neutral, because some reasoning may still appear in comments or pull requests
 * Bad, because context is lost and decisions get relitigated
 
-### Store decisions in an external wiki or document system
+### 5.2 Store decisions in an external wiki or document system
 
 * Good, because non-code collaborators may find wiki pages easier to edit
 * Neutral, because external docs can work if ownership is clear
 * Bad, because they drift away from code and are harder for coding agents to discover
 
-### Adopt Architecture Decision Records in \`${adrDir}/\` using the MADR bare template
+### 5.3 Adopt Architecture Decision Records in \`${adrDir}/\` using the MADR bare template
 
 * Good, because decisions live with the code they govern
 * Good, because the bare template captures drivers, outcome, consequences, confirmation, and option tradeoffs
 * Neutral, because ADRs add a small amount of documentation work
 * Bad, because the team must remember to supersede or update stale decisions
 
-## More Information
+## 6. More Information
 
 * MADR: <https://adr.github.io/madr/>
 * Bare template: <https://github.com/adr/madr/blob/develop/template/adr-template-bare.md>`;

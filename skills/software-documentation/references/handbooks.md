@@ -33,9 +33,10 @@ explaining every detail.
   against the repository, so the reader can search for them.
 - Link down to the architecture doc, ADRs, specs, and code. Link across to
   related topics. Don't copy their content.
-- Start with an index that lists the topics, each with a one-line summary of
-  what the reader will understand. When the handbook outgrows one file, give
-  each topic its own page and keep the index as the entry page.
+- Start with a table of contents that lists the numbered topics, each with a
+  one-line summary of what the reader will understand. When the handbook
+  outgrows one file, give each topic its own page and keep the table of
+  contents as the entry page.
 - Put open questions and todos at the bottom of the topic they belong to.
 
 ## Good examples
@@ -80,15 +81,16 @@ without schemas, and links down for the machinery.
 It works because it explains why the concept matters, defines the one domain
 term it needs, and ends with a landmark and a link to a related topic.
 
-**An index:**
+**A table of contents:**
 
-> - **Transactions**: why money always moves in matching pairs, and the one
+> - **1. Transactions**: why money always moves in matching pairs, and the one
 >   service allowed to move it.
-> - **Data recovery**: how any balance can be rebuilt from history.
-> - **Security**: who can see or move money, and where that is checked.
+> - **2. Data recovery**: how any balance can be rebuilt from history.
+> - **3. Security**: who can see or move money, and where that is checked.
 
-It works because each line promises one thing the reader will understand, and
-the topics are concepts rather than folders.
+It works because each line promises one thing the reader will understand, the
+numbers match the section headings, and the topics are concepts rather than
+folders.
 
 ## Bad examples
 

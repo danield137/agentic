@@ -8,7 +8,7 @@ informed: Skill collection users
 
 # Consolidate documentation skills under software-documentation
 
-## Context and Problem Statement
+## 1. Context and Problem Statement
 
 Documentation guidance was split across the `readme-creation` skill, the
 `adr-skill` skill, and the design doc layout in
@@ -21,7 +21,7 @@ of depth in one paragraph.
 How should the collection guide agents to pick the right document type and
 write it at the right level of detail?
 
-## Decision Drivers
+## 2. Decision Drivers
 
 * An agent must choose the document type before writing, based on the reader
   and the question the document answers.
@@ -32,24 +32,24 @@ write it at the right level of detail?
 * Always-on instructions should stay short.
 * Attribution for the third-party ADR material must be preserved.
 
-## Considered Options
+## 3. Considered Options
 
 * One software-documentation skill with a guide per type
 * Separate skills per document type
 * Always-on documentation instructions
 
-## Decision Outcome
+## 4. Decision Outcome
 
 Chosen option: "One software-documentation skill with a guide per type",
 because routing between types and the shared rules only work when one skill
 sees every type, while each type's guide loads only when it is needed.
 
-### Before and After
+### 4.1 Before and After
 
 Use block diagrams because the decision changes which components hold the
 documentation guidance.
 
-#### Before
+#### 4.1.1 Before
 
 ```mermaid
 flowchart LR
@@ -59,7 +59,7 @@ flowchart LR
     Request -.-> Others[Handbooks, architecture docs, and specs with no guidance]
 ```
 
-#### After
+#### 4.1.2 After
 
 ```mermaid
 flowchart LR
@@ -71,7 +71,7 @@ flowchart LR
     Skill --> Others[Handbook, architecture doc, and spec guides]
 ```
 
-### Consequences
+### 4.2 Consequences
 
 * Good, because one routing table and one set of shared rules cover every
   document type.
@@ -87,16 +87,16 @@ flowchart LR
 * Neutral, because the Apache-2.0 and MADR material now sits inside a broader
   skill, with `SOURCE.txt` listing exactly which files it covers.
 
-### Confirmation
+### 4.3 Confirmation
 
 The decision is confirmed when `validate_skill.py` passes, the ADR scripts work
 from their new location, and the trigger evals in `evals/triggering.json` load
 the skill for README, ADR, design doc, handbook, architecture doc, and spec
 requests but not for the negative cases.
 
-## Pros and Cons of the Options
+## 5. Pros and Cons of the Options
 
-### One software-documentation skill with a guide per type
+### 5.1 One software-documentation skill with a guide per type
 
 * Good, because routing can compare all types side by side.
 * Good, because shared rules are written once.
@@ -104,7 +104,7 @@ requests but not for the negative cases.
   front.
 * Bad, because a single description must cover many kinds of request.
 
-### Separate skills per document type
+### 5.2 Separate skills per document type
 
 * Good, because each description can be narrow and precise.
 * Bad, because no single skill can route between types, so content lands in
@@ -112,13 +112,13 @@ requests but not for the negative cases.
 * Bad, because the shared rules would be copied into every skill and drift
   apart.
 
-### Always-on documentation instructions
+### 5.3 Always-on documentation instructions
 
 * Good, because the guidance is always present.
 * Bad, because long per-type guidance would load into every session, including
   sessions with no documentation work.
 
-## More Information
+## 6. More Information
 
 * Related: [Require before-and-after diagrams in ADRs](2026-09-14-require-before-after-diagrams.md),
   which still applies to the ADR guide.
