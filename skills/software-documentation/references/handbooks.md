@@ -26,8 +26,9 @@ explaining every detail.
   broad strokes, then where to look.
 - Describe flows as rough step-by-step outlines: numbered, plain verbs, one idea
   per step.
-- Give landmarks, not maps. "Recipe connections are stored in the
-  `recipe_links` table" is enough; leave out its columns.
+- Give landmarks, not maps. In the imaginary recipe app below, "Recipe
+  connections are stored in the `recipe_links` table" is enough; leave out its
+  columns.
 - Use the codebase's real names for services, folders, and tables, verified
   against the repository, so the reader can search for them.
 - Link down to the architecture doc, ADRs, specs, and code. Link across to
@@ -38,6 +39,10 @@ explaining every detail.
 - Put open questions and todos at the bottom of the topic they belong to.
 
 ## Good examples
+
+The good and bad examples below come from two imaginary apps, a recipe app and
+a banking app. Use them only to calibrate the level of detail. Don't reuse
+their names, facts, or wording; a real handbook describes the actual codebase.
 
 **A topic told as a rough step-by-step outline** (recipe app, "Similar
 recipes"):

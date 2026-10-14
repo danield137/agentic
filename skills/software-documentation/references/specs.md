@@ -41,6 +41,10 @@ checking it, should never need to ask a question.
 
 ## Good examples
 
+The good and bad examples below come from two imaginary apps, a recipe app and
+a banking app. Use them only to calibrate the level of detail. Don't reuse
+their names, facts, or wording; a real spec defines the actual contract.
+
 **An operation entry** (recipe app):
 
 > **`GET /v1/recipes/{recipeId}/similar`**

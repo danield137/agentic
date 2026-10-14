@@ -45,7 +45,9 @@ the problem at handbook level and describes the proposal at architecture level.
 An ADR records one decision at architecture level. A comment sits next to the
 code and explains only the local reason.
 
-The same feature, "find similar recipes" in a recipe app, at each level:
+The table below shows one feature, "find similar recipes" in an imaginary
+recipe app, at each level. It only illustrates the levels of detail; don't
+reuse its names, facts, or wording.
 
 | Type | What it says |
 | --- | --- |

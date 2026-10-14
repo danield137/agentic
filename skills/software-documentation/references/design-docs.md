@@ -41,6 +41,10 @@ describes the result, and the design doc remains the record of the proposal.
 
 ## Good examples
 
+The good and bad examples below come from an imaginary banking app. Use them
+only to calibrate the level of detail. Don't reuse their names, facts, or
+wording; a real design doc describes the actual change.
+
 **Scope that reviewers can check** (banking app, "Scheduled transfers"):
 
 > **Goal:** Let customers schedule a transfer for a future date.

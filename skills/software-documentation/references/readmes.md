@@ -91,6 +91,10 @@ move the detail to the product's owning documentation.
 
 ## Good examples
 
+The good and bad examples below come from an imaginary recipe app. Use them
+only to calibrate the level of detail. Don't reuse their names, facts, or
+wording; a real README describes the actual repository.
+
 **Purpose and first use up front** (recipe app):
 
 > **similar-recipes**

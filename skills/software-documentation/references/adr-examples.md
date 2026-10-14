@@ -1,6 +1,6 @@
 # ADR Example
 
-Use this as the reference shape for new ADRs. Keep real ADRs specific and free of placeholder text.
+Use this as the reference shape for new ADRs. It describes an imaginary project, so copy its structure, not its names, facts, or decisions. Keep real ADRs specific and free of placeholder text.
 
 ````markdown
 ---

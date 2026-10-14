@@ -42,6 +42,10 @@ read before changing the system.
 
 ## Good examples
 
+The good and bad examples below come from two imaginary apps, a banking app and
+a recipe app. Use them only to calibrate the level of detail. Don't reuse their
+names, facts, or wording; a real architecture doc describes the actual system.
+
 **A decision tied to its driver, with a sequence diagram** (banking app):
 
 > Transfers must move money between two accounts atomically, so the Ledger
