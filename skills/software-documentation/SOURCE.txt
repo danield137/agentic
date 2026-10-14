@@ -1,0 +1,23 @@
+The ADR material in this skill is adapted from the Vercel AI SDK adr-skill:
+
+  references/adrs.md
+  references/adr-conventions.md
+  references/adr-examples.md
+  references/adr-review-checklist.md
+  references/adr-template-variants.md
+  assets/templates/adr-bare.md
+  assets/templates/adr-readme.md
+  scripts/new_adr.js
+  scripts/bootstrap_adr.js
+  scripts/set_adr_status.js
+
+Source: https://github.com/vercel/ai/tree/main/skills/adr-skill
+License: Apache License 2.0; see LICENSE-ADR-SKILL.txt.
+Copied and adapted for this skill collection.
+
+Additional template (assets/templates/adr-bare.md):
+Source: https://github.com/adr/madr/blob/develop/template/adr-template-bare.md
+License: MIT OR CC0-1.0; see LICENSE-MADR.txt.
+
+All other files in this skill are original to this collection and covered by
+the repository's LICENSE.

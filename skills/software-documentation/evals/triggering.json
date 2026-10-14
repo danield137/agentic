@@ -1,0 +1,70 @@
+[
+  {
+    "query": "this repo has no readme at all. write one that gets a new dev from clone to a running service",
+    "should_trigger": true
+  },
+  {
+    "query": "our README is mostly history from 2021, rewrite it so people can actually get started",
+    "should_trigger": true
+  },
+  {
+    "query": "write an ADR for moving the job queue from redis to postgres, we agreed on it in yesterday's sync",
+    "should_trigger": true
+  },
+  {
+    "query": "mark the caching ADR as superseded by the new one and link them both ways",
+    "should_trigger": true
+  },
+  {
+    "query": "new hires keep getting lost in the payments codebase. write an onboarding handbook that explains the main concepts and where they live",
+    "should_trigger": true
+  },
+  {
+    "query": "document the architecture of the ingestion pipeline: components, how they talk to each other, and sequence diagrams for the main flows",
+    "should_trigger": true
+  },
+  {
+    "query": "write a spec for POST /v1/transfers covering every field, error code, and limit",
+    "should_trigger": true
+  },
+  {
+    "query": "draft a design doc for adding scheduled transfers so the team can review it before we build anything",
+    "should_trigger": true
+  },
+  {
+    "query": "docs/ is a mess: old pages, duplicates, half of it out of date. propose a new layout and consolidate it",
+    "should_trigger": true
+  },
+  {
+    "query": "is docs/handbook/search.md too deep for a handbook? it reads like a schema dump",
+    "should_trigger": true
+  },
+  {
+    "query": "fix the typo on line 12 of README.md",
+    "should_trigger": false
+  },
+  {
+    "query": "add a docstring to parse_config",
+    "should_trigger": false
+  },
+  {
+    "query": "explain how src/ledger/transfer.py works",
+    "should_trigger": false
+  },
+  {
+    "query": "generate a typescript client from openapi.yaml",
+    "should_trigger": false
+  },
+  {
+    "query": "review PR 482 for regressions",
+    "should_trigger": false
+  },
+  {
+    "query": "summarize docs/design/scheduler.md in three bullets",
+    "should_trigger": false
+  },
+  {
+    "query": "bump the version in package.json and add a 2.3.0 entry to CHANGELOG.md",
+    "should_trigger": false
+  }
+]

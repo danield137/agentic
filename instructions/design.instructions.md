@@ -14,7 +14,7 @@ Design and architecture work is subtle. Do not jump directly into implementation
 - Avoid technically heavy wording unless the term has real significance, such as a data structure name, known design pattern, protocol, specific technology, or existing code concept that must be named precisely.
 - Put the right depth in the right place: start with the goal, example use cases, high-level flow, and component responsibilities before diving into storage layout, algorithms, benchmarks, tradeoffs, decisions, and open questions.
 - Prefer concrete examples and plain explanations before abstractions. Use precise technical detail where it changes the decision, contract, performance, correctness, or implementation risk.
-- For larger design docs, a good shape is: goal, example use cases, high-level system flow, components, current state/layout, constraints and tradeoffs, benchmark or validation contract, design decisions, and open questions.
+- When writing a design doc, follow the design doc guide and template in the `software-documentation` skill.
 
 ## Required workflow
 
@@ -23,7 +23,7 @@ Design and architecture work is subtle. Do not jump directly into implementation
 3. **Make a high-level pass first.** Sketch the algorithm, data flow, component responsibilities, or pseudocode before writing production code. Keep this implementation-independent enough to expose design tradeoffs early.
 4. **Validate the call-site shape.** Before finalizing the design, assume the implementation already exists and show what client code would look like when using it. Confirm that the resulting API, ergonomics, naming, and integration points make sense before implementing.
 5. **Structure larger changes into phases.** Always consider user compatibility and blast radius. If a change is risky, propose an initial phase made only of safe, preparatory changes before the final risky switch.
-6. **Write an ADR before implementation.** Once the direction is clear, create an Architecture Decision Record in the root folder of the relevant code area. For example, for a storage-module change, place it under `docs/adr/storage/{change-title}.md`.
+6. **Write an ADR before implementation.** Once the direction is clear, create an Architecture Decision Record in the root folder of the relevant code area. For example, for a storage-module change, place it under `docs/adr/storage/{change-title}.md`. Follow the ADR guide in the `software-documentation` skill.
 
 ## Decision standard
 

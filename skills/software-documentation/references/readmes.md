@@ -1,13 +1,21 @@
----
-name: readme-creation
-description: Create, write, rewrite, simplify, restructure, audit, and improve repository README files so they are approachable, accurate, and useful. Use for substantial README work, documenting a project or tool, or adding usage, setup, architecture, limitations, or known issues. Do not use for typo-only edits unless the user asks to apply this skill or its template.
----
-
-# README Creation
+# READMEs
 
 Create or substantially restructure an entry README around the reader's fastest
 path to value. Prefer concise, verified guidance over exhaustive technical
 detail or historical narrative.
+
+## Profile
+
+| Dimension | README |
+| --- | --- |
+| Reader | Someone who just found the repository or tool and wants to use it. |
+| Question | How do I get started? |
+| Language | Plain and direct. Explain repository-specific terms at first use; use standard industry terms without defining them. |
+| Coverage | Narrow: what it is, the common use, setup, a short mental model, and limitations. |
+| Depth | Shallow: one verified, runnable example of the common path, and the architecture as a short numbered flow. |
+| Intent | Get the reader to a first success fast, then point them onward. |
+| Length | Short. A reader reaches a first successful run within a few minutes. |
+| Stop when | A section starts teaching concepts in depth (handbook), justifying the design (architecture doc), or listing the full interface (spec). Link to those instead. |
 
 ## Workflow
 
@@ -81,39 +89,76 @@ Verify the owning component and placement of every listed item. Shared or
 generic tools must not hide product-specific defaults; document the coupling or
 move the detail to the product's owning documentation.
 
-## Default Skeleton
+## Good examples
 
-Specific README templates may be added to this skill later. When the target
-repository has a repository-specific template, it takes precedence over this
-generic default.
+**Purpose and first use up front** (recipe app):
 
-````markdown
-# <Project or tool name>
+> **similar-recipes**
+>
+> Suggests recipes similar to the one a cook is viewing, based on shared
+> ingredients, taste, and prep time.
+>
+> ```bash
+> curl http://localhost:8080/v1/recipes/r42/similar
+> ```
+>
+> Returns the three most similar recipes, best match first.
 
-<One or two sentences explaining what it is, who it helps, and the value it
-provides.>
+It works because the purpose fits in one sentence and a verified command shows
+the result before any setup.
 
-## Usage Example
+**The architecture as a short numbered flow:**
 
-```<shell-or-language>
-<Verified common, runnable example>
-```
+> 1. When a recipe is uploaded, its ingredients are categorized and it is
+>    connected to recipes that share ingredients.
+> 2. A request for similar recipes scores the connected recipes on
+>    ingredients, taste, and prep time.
+> 3. The three best matches are returned. The handbook's "Similar recipes"
+>    topic explains more.
 
-<Expected result or what the reader should notice.>
+It works because three steps give a mental model and link onward instead of
+explaining internals.
 
-## Setup Instructions
+**Limitations stated plainly:**
 
-<Prerequisites and verified setup steps.>
+> - Recipes with no ingredients get no suggestions.
+> - A new recipe starts appearing in suggestions about a minute after upload,
+>   not instantly.
 
-## Architecture Overview
+It works because each constraint is a plain fact, without hedging or promises
+of future work.
 
-1. <First verified step in the main flow.>
-2. <How the owning component processes or routes it.>
-3. <What result or side effect completes the flow.>
+## Bad examples
 
-## Limitations / Known Issues
+**History before purpose:**
 
-- <Verified unsupported behavior, constraint, or known issue.>
-````
+> This project started at a 2021 hackathon, when three of us wanted better
+> dinner ideas. Over the years it grew into...
 
-Use the skeleton as a starting point, not a requirement to manufacture content.
+It fails because the reader came to use the tool. History delays the first
+success and rarely belongs in a README.
+
+**An unverified, hedged command:**
+
+> Run `make all` (should work on most systems; if not, try the Docker setup,
+> which may be out of date).
+
+It fails because the command wasn't verified, and the hedging tells the reader
+the README can't be trusted.
+
+**An internals tour:**
+
+> **Modules**
+>
+> - `indexer/`: `GraphBuilder`, `EdgeWeigher`, `PcaReducer`, ...
+> - `api/`: `SimilarHandler`, `CacheMiddleware`, ...
+
+It fails because a class-by-class inventory is architecture detail. The README
+needs one short flow and a link.
+
+## Template
+
+When the target repository has its own README template or convention, it takes
+precedence. Otherwise start from `assets/templates/repository-readme.md`, whose
+sections follow the reader journey above. Use it as a starting point, not a
+requirement to manufacture content.

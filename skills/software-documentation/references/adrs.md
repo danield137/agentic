@@ -1,13 +1,26 @@
----
-name: adr-skill
-description: Create and maintain Architecture Decision Records (ADRs) using the MADR bare template with required before-and-after Mermaid diagrams. Use when you need to propose, write, update, accept/reject, deprecate, or supersede an ADR; bootstrap an ADR folder and index; consult existing ADRs before implementation; or enforce MADR bare conventions.
-metadata:
-  internal: true
----
+# ADRs
 
-# ADR Skill
+An Architecture Decision Record (ADR) captures one important decision with its
+context, the options considered, and its consequences.
 
 Use the MADR bare template as the only ADR format. Do not offer alternate ADR formats unless the target repo already has an incompatible ADR convention.
+
+## Profile
+
+| Dimension | ADR |
+| --- | --- |
+| Reader | Future maintainers and reviewers who need to know why the system is the way it is. |
+| Question | What did we decide, and why? |
+| Language | Technical and specific. Write decision drivers as criteria or constraints. |
+| Coverage | One decision: its context, drivers, real options, outcome, consequences, and confirmation. |
+| Depth | Architecture level, limited to the part of the system the decision changes, with matching before and after diagrams. |
+| Intent | Record a decision and its reasons so it can be followed, revisited, or superseded. |
+| Length | Short. One decision, usually one or two pages. |
+| Stop when | The decision and its tradeoffs are clear. Implementation steps belong in the design doc or the code, and the full system description in the architecture doc. |
+
+For a complete good ADR, see `references/adr-examples.md`. For the usual
+failures and their fixes, see the Common Fixes table in
+`references/adr-review-checklist.md`.
 
 ## ADR Shape
 
@@ -135,10 +148,10 @@ Before drafting, summarize the captured intent, selected diagram family, and dia
 
 Use `assets/templates/adr-bare.md`.
 
-Preferred:
+Preferred, where `<skill-dir>` is this skill's base directory:
 
 ```bash
-node /path/to/adr-skill/scripts/new_adr.js --title "Choose database"
+node <skill-dir>/scripts/new_adr.js --title "Choose database"
 ```
 
 Then replace every placeholder with real content. Keep the ADR self-contained and focused on the decision.
@@ -147,7 +160,7 @@ Draft the paired diagrams only after confirming the current state and chosen out
 
 ### 4. Review
 
-Use `references/review-checklist.md` as a prompt list:
+Use `references/adr-review-checklist.md` as a prompt list:
 
 - Metadata follows repo convention.
 - Context explains why the decision exists now.
@@ -186,7 +199,7 @@ Use `scripts/set_adr_status.js` for status changes.
 When introducing ADRs to a repo with no ADR directory:
 
 ```bash
-node /path/to/adr-skill/scripts/bootstrap_adr.js --dir adr
+node <skill-dir>/scripts/bootstrap_adr.js --dir adr
 ```
 
 This creates an index and a first bare-template ADR for adopting ADRs.
@@ -195,9 +208,9 @@ This creates an index and a first bare-template ADR for adopting ADRs.
 
 - `assets/templates/adr-bare.md` - the only ADR template.
 - `assets/templates/adr-readme.md` - ADR directory index scaffold.
-- `references/examples.md` - filled-out bare ADR example.
+- `references/adr-examples.md` - filled-out bare ADR example.
 - `references/adr-conventions.md` - directory, naming, status, and lifecycle conventions.
-- `references/review-checklist.md` - bare-template review prompts.
+- `references/adr-review-checklist.md` - bare-template review prompts.
 - `scripts/new_adr.js` - creates a new ADR using the bare template.
 - `scripts/bootstrap_adr.js` - creates an ADR directory, index, and first ADR.
 - `scripts/set_adr_status.js` - updates ADR status in-place.

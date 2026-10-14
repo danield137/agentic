@@ -2,7 +2,7 @@
 
 Use this as the reference shape for new ADRs. Keep real ADRs specific and free of placeholder text.
 
-```markdown
+````markdown
 ---
 status: accepted
 date: 2026-06-25
@@ -96,4 +96,4 @@ The decision is confirmed when the main test pipeline uses SQLite by default, a 
 
 * Related ADR: [Use PostgreSQL for production](2026-05-01-use-postgresql-for-production.md)
 * Follow-up: add weekly PostgreSQL compatibility CI job.
-```
+````
