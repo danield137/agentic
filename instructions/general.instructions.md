@@ -33,3 +33,17 @@ Rules for both variants:
 - Use the same command, input, and environment for both benchmarks. A comparison against a differently measured baseline is not a result.
 - The conformance step runs tests that already exist. Do not write a new conformance suite as part of the loop.
 - If a step cannot run — no benchmark harness, no conformance suite, no way to reproduce the failure as a test — say so and ask how to proceed instead of quietly dropping it.
+
+## When the user doesn't understand
+
+If the user signals confusion without saying what's unclear (for example, "I don't understand" or "elaborate"), don't just repeat the same explanation at greater length. Step down in complexity each time the confusion continues:
+
+1. **Unpack jargon gradually.**
+   - First pass: define the term inline. Example: "ACID (Atomicity, Consistency, Isolation, Durability)".
+   - If still unclear: drop the term and use plain language. Example: "The database guarantees that a change either fully happens or doesn't happen at all, ..."
+2. **Use concrete analogies for abstract concepts.** Use an ELI5-level analogy grounded in everyday experience. Example: "Atomicity is like a bank transfer: the money leaves one account *and* arrives in the other, or neither happens. You never end up with money that left but never arrived."
+3. **Re-establish context with a structure.** Use SCR (Situation → Complication → Resolution) or SCQA (Situation → Complication → Question → Answer):
+   - **Situation:** what we're working on and why.
+   - **Complication:** what's wrong or tricky.
+   - **Question/Resolution:** what we're deciding and the recommended path.
+   Give only as much background as the user needs to get their bearings.
