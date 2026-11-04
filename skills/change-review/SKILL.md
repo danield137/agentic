@@ -1,10 +1,10 @@
 ---
 name: change-review
 description: >
-  Runs a five-headed first-pass review of a pull request, branch diff, commit range, or local
+  Runs a seven-headed first-pass review of a pull request, branch diff, commit range, or local
   changes. Use when the user asks to "review this PR", "review my changes", "review my diff",
   perform a "change review" or "first-pass review", identify what they should flag, help review a
-  change, or draft review comments. Launches five independent concern-specific reviewers, then
+  change, or draft review comments. Launches seven independent concern-specific reviewers, then
   verifies, merges, and deduplicates their findings without autonomously posting anything.
 ---
 
@@ -19,7 +19,7 @@ Never submit, post, edit, resolve, approve, reject, or reply to a review comment
 explicit approval. Produce the review as a proposal only. After the user approves specific
 comments, post only those comments and only through the tool they approve.
 
-## Required five-headed workflow
+## Required seven-headed workflow
 
 Always use this workflow for a code-change review.
 
@@ -34,19 +34,21 @@ Always use this workflow for a code-change review.
    - Produce a short internal executive summary and give the same summary and exact review scope to
      every reviewer.
 
-3. **Launch exactly five independent `code-review` subagents in parallel.**
-   - Use one subagent for each review head below; do not add a sixth general reviewer.
+3. **Launch exactly seven independent `code-review` subagents in parallel.**
+   - Use one subagent for each review head below; do not add an eighth general reviewer.
    - Every subagent reads the complete scoped change but reports only its assigned concern.
    - Give every subagent the repository instructions, comparison base, changed-file scope, purpose
      summary, and the shared reviewer contract below.
+   - Set each subagent's `reasoning_effort` explicitly using the per-head table below.
+     Leave model selection unchanged unless the user requests a model override.
    - Subagents are read-only. They must not edit files, post comments, or spawn more reviewers.
-   - If five independent reviewers are unavailable, say so rather than faking five-head coverage.
+   - If seven independent reviewers are unavailable, say so rather than faking seven-head coverage.
 
 4. **Verify the reports.**
-   - Collect all five reports before synthesizing.
+   - Collect all seven reports before synthesizing.
    - The orchestrator checks every reported file/line, call path, and failure scenario against the
      code. Discard unsupported or out-of-scope findings.
-   - The orchestrator synthesizes; it does not perform a separate sixth review or invent findings
+   - The orchestrator synthesizes; it does not perform a separate eighth review or invent findings
      that no specialist reported.
 
 5. **Merge and deduplicate.**
@@ -69,12 +71,31 @@ Always use this workflow for a code-change review.
    - Use `ask_user` for one decision at a time before implementing, posting, or presenting one
      alternative as settled.
 
-7. **Present one ranked review, not five raw reports.**
+7. **Present one ranked review, not seven raw reports.**
    - Sort by severity, then confidence, then blast radius.
-   - Show compact coverage results for all five heads so the user can see that each ran.
+   - Show compact coverage results for all seven heads, including the reasoning effort used, so
+     the user can see that each ran.
    - If a head found nothing significant, say so in the coverage line; do not manufacture a finding.
 
-## The five review heads
+## Per-head reasoning effort
+
+Use these launch settings, not merely instructions in the reviewer's prompt:
+
+| Review head | `reasoning_effort` |
+| --- | --- |
+| Codebase consistency | `medium` |
+| SOLID and Clean Architecture | `max` |
+| Correctness and edge cases | `max` |
+| Compatibility and evolution | `max` |
+| Naming, logical flow, and readability | `high` |
+| Complexity and simplification | `high` |
+| Hacks and special-casing | `medium` |
+
+`max` means maximum reasoning effort. If the selected model or tool cannot honor a requested level,
+report the limitation and ask the user before substituting a lower level or changing models. Never
+silently downgrade or claim a reasoning setting that was not applied.
+
+## The seven review heads
 
 ### 1. Codebase consistency
 
@@ -103,8 +124,10 @@ Look for:
 - open/closed extensibility, hidden type checks, duplicated policy, and leaky abstractions;
 - coupling that makes the next implementation or execution substrate require special cases.
 
-Do not report codebase style, naming polish, or compatibility by itself. Explain the concrete change
-or extension that the design makes unsafe or unnecessarily difficult.
+Do not report codebase style, naming polish, or compatibility by itself. Leave behavior-preserving
+logic simplification and duplicated implementations to the complexity head unless they also create
+a distinct responsibility or dependency problem. Explain the concrete change or extension that the
+design makes unsafe or unnecessarily difficult.
 
 ### 3. Correctness and edge cases
 
@@ -146,7 +169,48 @@ Look for:
 
 Apply this naming priority: codebase consistency > contextual consistency > standardization >
 readability. Do not re-report correctness or architecture findings merely because they also make the
-code harder to read.
+code harder to read. Leave reductions in unnecessary logic to the complexity head; focus here on
+how clearly the remaining logic communicates intent.
+
+### 6. Complexity and simplification
+
+Review only unnecessary logic and duplication that can be removed without changing behavior.
+
+Look for:
+- unnecessary nesting, repeated guards, redundant branches, and conditions with the same outcome;
+- special edge-case paths that can be folded into the general implementation;
+- duplicated implementations that can share a helper, generic function, or template;
+- type-specific overloads whose logic is identical and whose consolidation fits the language's
+  type system and optimization rules.
+
+Show the simpler equivalent and verify that it preserves the supported input domain, boundary and
+error behavior, evaluation order, side effects, and public contracts. Do not assume branches are
+exhaustive: mixed-sign, zero, null, and other uncovered inputs may behave differently.
+
+Do not recommend consolidation merely to reduce line count or introduce an abstraction for its own
+sake. Type-specific implementations may be necessary for different semantics or performance;
+require concrete evidence that the proposed consolidation preserves both. Leave naming and
+explanation issues to readability, and responsibility or dependency changes to architecture.
+
+### 7. Hacks and special-casing
+
+Review only symptom-specific patches that bypass the underlying rule instead of fixing it.
+
+Look for:
+- hardcoded answers or input-specific exceptions where a general rule should apply;
+- test-shaped fixes that recognize a fixture or example instead of handling the supported class
+  of inputs;
+- workarounds that conceal broken invariants or route around the mechanism responsible for them;
+- ad hoc exceptions that leave equivalent callers or inputs without the same treatment.
+
+Identify the general rule or existing mechanism, explain why the exception is unjustified, and
+propose a root-cause fix with a concrete caller or input scenario. Do not infer a hack from a magic
+value or unusual branch alone.
+
+Exempt justified, documented fast paths, compatibility shims, platform workarounds, and explicit
+domain exceptions when they preserve the required behavior. Leave redundant but valid logic to
+complexity and standalone behavioral failures to correctness; tag overlap when the same root cause
+belongs to both heads.
 
 ## Shared reviewer contract
 
@@ -195,8 +259,9 @@ Present the merged review in this shape:
 ```text
 * Executive summary: <purpose, approach, blast radius>
 * Opinion: <one-line readiness assessment>
-* Coverage: codebase consistency N; SOLID/architecture N; correctness N; compatibility N;
-  naming/readability N
+* Coverage: codebase consistency N (medium); SOLID/architecture N (max); correctness N (max);
+  compatibility N (max); naming/readability N (high); complexity/simplification N (high);
+  hacks/special-casing N (medium)
 * Merged comments:
   1. [SEVERITY] [Concern tag(s)] file:line - <proposed comment>
      Evidence: <concrete scenario>
@@ -206,7 +271,7 @@ Present the merged review in this shape:
   1. <only genuine conflict/tricky tradeoff; omit section when empty>
 ```
 
-Do not include the five raw reports unless the user asks for them. If there are no significant
+Do not include the seven raw reports unless the user asks for them. If there are no significant
 findings, say so directly after the coverage line.
 
 After presenting the review, ask which comments, if any, the user wants to post. Post nothing until

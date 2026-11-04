@@ -48,7 +48,7 @@ no re-install after a `git pull`.
 | Skill | Description |
 | --- | --- |
 | `backlog` | Create and maintain lean, milestone-based planning backlogs. |
-| `change-review` | Run five independent review heads, then verify, merge, and deduplicate their findings. |
+| `change-review` | Run seven independent review heads, including complexity and hacks, then verify, merge, and deduplicate their findings. |
 | `code-polish` | Review code for smells, dead code, duplication, SRP violations, extensibility problems, and bugs, reported as a ranked table. |
 | `interactive-brainstorm` | Explore open-ended ideas as a user-steered question-and-answer search tree with provisional answers and backtracking. |
 | `ppt-master` | Create, edit, redesign, and validate editable PowerPoint decks with a Copilot-adapted core workflow. |
